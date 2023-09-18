@@ -11,15 +11,15 @@ import { APP_PIPE } from '@nestjs/core';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: 'env/.env.development',
+      envFilePath: 'env/.env.' + process.env.NODE_ENV || 'development',
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: process.env.POSTGRES_HOST,
       port: parseInt(process.env.POSTGRES_PORT, 10),
-      username: 'postgres',
+      username: process.env.POSTGRES_USERNAME,
       password: process.env.POSTGRES_PASSWORD,
-      database: process.env.POSTGRES_DB,
+      database: process.env.POSTGRES_DATABASE,
       entities: [User],
       synchronize: true,
     }),
