@@ -22,6 +22,7 @@ export class AuthController {
   }
 
   @Post('/register')
+  @Serialize(UserDto)
   register(@Body() registerUserDto: RegisterUserDto) {
     return this.usersService.create(registerUserDto);
   }

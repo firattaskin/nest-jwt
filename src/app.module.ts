@@ -6,6 +6,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './modules/users/users.entity';
 import { ValidationPipe } from '@nestjs/common';
 import { APP_PIPE } from '@nestjs/core';
+import { ProductModule } from './modules/product/product.module';
+import { Product } from './modules/product/product.entity';
 
 @Module({
   imports: [
@@ -20,11 +22,12 @@ import { APP_PIPE } from '@nestjs/core';
       username: process.env.POSTGRES_USERNAME,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DATABASE,
-      entities: [User],
+      entities: [User, Product],
       synchronize: true,
     }),
     AuthModule,
     UsersModule,
+    ProductModule,
   ],
   controllers: [],
   providers: [

@@ -10,4 +10,4 @@ RUN npm install
 
 COPY . .
 
-ENTRYPOINT [ "/bin/sh" , "-c", "npm install && npm run start:dev"]
+ENTRYPOINT [ "/bin/sh" , "-c", "npm install && npm run start:debug"]

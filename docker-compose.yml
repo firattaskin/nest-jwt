@@ -25,9 +25,11 @@ services:
       POSTGRES_USER: your_user
       POSTGRES_PASSWORD: your_password
       POSTGRES_DB: your_database
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
 
   rabbitmq:
-    image: rabbitmq:latest
+    image: rabbitmq:management
     ports:
       - "5672:5672"
       - "15672:15672"
@@ -39,3 +41,5 @@ services:
     image: redis:latest
     ports:
       - "6379:6379"
+volumes:
+  postgres_data:
